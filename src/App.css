@@ -1,9 +1,8 @@
-.undisplay {
+.forum .undisplay {
   display: none;
 }
 
 .display {
-  background-color: blue;
   font-size: 20px;
   position: absolute;
 }
