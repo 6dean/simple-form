@@ -64,7 +64,6 @@ function App() {
               setInfos(true);
             }}
           />
-          {console.log(infos)}
         </div>
       </div>
       <div className={infos === true ? "display" : "undisplay"}>
