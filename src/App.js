@@ -14,69 +14,74 @@ function App() {
         <header>
           <p>create Account </p>
         </header>
-        <div className={infos === true && "undisplay"}>
+        {infos === false ? (
           <div>
-            <input
-              onChange={(name) => setName(name.target.value)}
-              type="text"
-              placeholder="Jean Dupont"
-              name="name"
-              value={name}
-            />
+            <div>
+              <input
+                onChange={(name) => setName(name.target.value)}
+                type="text"
+                placeholder="Jean Dupont"
+                name="name"
+                value={name}
+              />
+            </div>
+            <div>
+              <input
+                onChange={(elem) => setEmail(elem.target.value)}
+                type="email"
+                placeholder="jeandupont@lereacteur.io"
+                name="email"
+                value={email}
+              />
+            </div>
+            <div>
+              <input
+                onChange={(elem) => setPassword(elem.target.value)}
+                type="password"
+                placeholder="lErAcTeUr2022"
+                name="password"
+                value={password}
+              />
+            </div>
+            <div>
+              <input
+                onChange={(elem) => setConfirmPass(elem.target.value)}
+                type="password"
+                placeholder="lErAcTeUr2022"
+                name="confirm password"
+                value={confirmPass}
+              />
+            </div>
+            <div>
+              <button
+                onClick={() => {
+                  if (password !== confirmPass) {
+                    alert(`Password is not the same`);
+                  } else if (name === "" || email === "") {
+                    alert(`Info needed`);
+                  } else {
+                    setInfos(true);
+                  }
+                }}
+              >
+                envoyez
+              </button>
+            </div>
           </div>
+        ) : (
           <div>
-            <input
-              onChange={(elem) => setEmail(elem.target.value)}
-              type="email"
-              placeholder="jeandupont@lereacteur.io"
-              name="email"
-              value={email}
-            />
-          </div>
-          <div>
-            <input
-              onChange={(elem) => setPassword(elem.target.value)}
-              type="password"
-              placeholder="lErAcTeUr2022"
-              name="password"
-              value={password}
-            />
-          </div>
-          <div>
-            <input
-              onChange={(elem) => setConfirmPass(elem.target.value)}
-              type="password"
-              placeholder="lErAcTeUr2022"
-              name="confirm password"
-              value={confirmPass}
-            />
-          </div>
-          <div>
+            <div>name:{name}</div>
+            <div>email:{email}</div>
+            <div>password:{password}</div>
             <button
               onClick={() => {
-                if (password !== confirmPass) {
-                  alert(`Password is not the same`);
-                } else {
-                  setInfos(true);
-                }
+                setInfos(false);
               }}
             >
-              envoyez
+              EDITER
             </button>
           </div>
-        </div>
-        <div className={infos === true ? "display" : "undisplay"}>
-          <div>name:{name}</div>
-          <div>email:{email}</div>
-          <div>password:{password}</div>
-          <button
-            onClick={() => {
-              setInfos(false);
-            }}
-          >
-            EDITER
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );
