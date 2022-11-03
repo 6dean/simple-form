@@ -12,42 +12,45 @@ function App() {
     <div className="formulaire">
       <div className="App">
         <header>
-          <p>create Account </p>
+          <h1>Create Account </h1>
         </header>
         {infos === false ? (
-          <div>
+          <div className="input-block">
             <div>
+              <p>Name</p>
               <input
                 onChange={(name) => setName(name.target.value)}
                 type="text"
-                placeholder="Jean Dupont"
+                placeholder="Schwartzy"
                 name="name"
                 value={name}
               />
             </div>
             <div>
+              <p>Email</p>
               <input
                 onChange={(elem) => setEmail(elem.target.value)}
                 type="email"
-                placeholder="jeandupont@lereacteur.io"
+                placeholder="youraddress@mail.com"
                 name="email"
                 value={email}
               />
             </div>
             <div>
+              <p>Password</p>
               <input
                 onChange={(elem) => setPassword(elem.target.value)}
                 type="password"
-                placeholder="lErAcTeUr2022"
                 name="password"
                 value={password}
               />
             </div>
             <div>
+              <p>Confirm Password</p>
               <input
+                className={password !== confirmPass && "pass-border"}
                 onChange={(elem) => setConfirmPass(elem.target.value)}
                 type="password"
-                placeholder="lErAcTeUr2022"
                 name="confirm password"
                 value={confirmPass}
               />
@@ -56,30 +59,42 @@ function App() {
               <button
                 onClick={() => {
                   if (password !== confirmPass) {
-                    alert(`Password is not the same`);
+                    alert(`Passwords are not identical ! Please retry`);
+                  }
+                  if (password !== confirmPass) {
                   } else if (name === "" || email === "") {
-                    alert(`Info needed`);
+                    alert(`Your informations are not complete`);
                   } else {
                     setInfos(true);
                   }
                 }}
               >
-                envoyez
+                SEND
               </button>
             </div>
           </div>
         ) : (
           <div>
-            <div>name:{name}</div>
-            <div>email:{email}</div>
-            <div>password:{password}</div>
-            <button
-              onClick={() => {
-                setInfos(false);
-              }}
-            >
-              EDITER
-            </button>
+            <div className="details">
+              <div>
+                <p>Name : {name}</p>
+              </div>
+              <div>
+                <p>Email : {email}</p>
+              </div>
+              <div>
+                <p>Password : {password}</p>
+              </div>
+            </div>
+            <div className="last-button">
+              <button
+                onClick={() => {
+                  setInfos(false);
+                }}
+              >
+                EDIT
+              </button>
+            </div>
           </div>
         )}
       </div>
